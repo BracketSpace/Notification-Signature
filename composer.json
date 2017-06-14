@@ -1,0 +1,18 @@
+{
+    "name": "underdev/notification-bbpress",
+    "description": "Notification : bbPress WordPress plugin",
+    "require": {
+	},
+    "license": "GPL3",
+    "authors": [
+        {
+            "name": "Kuba Mikita",
+            "email": "jakub@underdev.it"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "underDEV\\Notification\\Signature\\" : "inc"
+        }
+    }
+}

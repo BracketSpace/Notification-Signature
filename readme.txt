@@ -8,7 +8,7 @@ Stable tag: 1.0
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
-Signature support for Notification plugin
+Add your own Signature to Notification Emails
 
 == Description ==
 

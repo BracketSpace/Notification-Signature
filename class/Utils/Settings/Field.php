@@ -5,7 +5,7 @@ s<?php
  * @package notification/signature
  */
 
-namespace underDEV\Notification\Signature\Utils\Settings;
+namespace BracketSpace\Notification\Signature\Utils\Settings;
 
 /**
  * Field class

@@ -5,7 +5,7 @@
  * @package notification/signature
  */
 
-namespace underDEV\Notification\Signature\Utils\Settings\CoreFields;
+namespace BracketSpace\Notification\Signature\Utils\Settings\CoreFields;
 
 /**
  * Range class

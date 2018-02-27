@@ -6,7 +6,7 @@
  * @package notification/signature
  */
 
-namespace underDEV\Notification\Signature\Utils\Interfaces;
+namespace BracketSpace\Notification\Signature\Utils\Interfaces;
 
 /**
  * Cacheable interface

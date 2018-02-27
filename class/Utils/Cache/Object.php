@@ -7,10 +7,10 @@
  * @package notification/signature
  */
 
-namespace underDEV\Notification\Signature\Utils\Cache;
+namespace BracketSpace\Notification\Signature\Utils\Cache;
 
-use underDEV\Notification\Signature\Utils\Cache\Cache;
-use underDEV\Notification\Signature\Utils\Interfaces\Cacheable;
+use BracketSpace\Notification\Signature\Utils\Cache\Cache;
+use BracketSpace\Notification\Signature\Utils\Interfaces\Cacheable;
 
 /**
  * Object cache

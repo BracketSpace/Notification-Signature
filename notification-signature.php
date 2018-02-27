@@ -3,7 +3,7 @@
  * Plugin Name: Notification : Signature
  * Description: Add your own Signature to Notification Emails
  * Plugin URI: https://notification.underdev.it
- * Author: underDEV
+ * Author: BracketSpace
  * Author URI: https://underdev.it
  * Version: 1.0
  * License: GPL3
@@ -23,7 +23,7 @@ function notification_signature_autoload( $class ) {
 
 	$parts = explode( '\\', $class );
 
-	if ( array_shift( $parts ) != 'underDEV' ) {
+	if ( array_shift( $parts ) != 'BracketSpace' ) {
 		return false;
 	}
 
@@ -53,7 +53,7 @@ add_action( 'after_setup_theme', function() {
 	/**
 	 * Requirements check
 	 */
-	$requirements = new underDEV\Notification\Signature\Utils\Requirements( __( 'Notification : Signature', 'notification-signature' ), array(
+	$requirements = new BracketSpace\Notification\Signature\Utils\Requirements( __( 'Notification : Signature', 'notification-signature' ), array(
 		'php'          => '5.3',
 		'wp'           => '4.6',
 		'notification' => true,
@@ -96,8 +96,8 @@ add_action( 'after_setup_theme', function() {
 				'addons'   => array(
 					'label' => __( 'Add signature to every email', 'notification-signature' )
 				),
-				'render'   => array( new underDEV\Notification\Signature\Utils\Settings\CoreFields\Checkbox(), 'input' ),
-				'sanitize' => array( new underDEV\Notification\Signature\Utils\Settings\CoreFields\Checkbox(), 'sanitize' ),
+				'render'   => array( new BracketSpace\Notification\Signature\Utils\Settings\CoreFields\Checkbox(), 'input' ),
+				'sanitize' => array( new BracketSpace\Notification\Signature\Utils\Settings\CoreFields\Checkbox(), 'sanitize' ),
 			) )
 			->add_field( array(
 				'name'        => __( 'Signature', 'notification-signature' ),
@@ -108,8 +108,8 @@ add_action( 'after_setup_theme', function() {
 					'tiny'          => true,
 				),
 				'description' => __( 'Please remember that images may not be rendered', 'notification-signature' ),
-				'render'      => array( new underDEV\Notification\Signature\Utils\Settings\CoreFields\Editor(), 'input' ),
-				'sanitize'    => array( new underDEV\Notification\Signature\Utils\Settings\CoreFields\Editor(), 'sanitize' ),
+				'render'      => array( new BracketSpace\Notification\Signature\Utils\Settings\CoreFields\Editor(), 'input' ),
+				'sanitize'    => array( new BracketSpace\Notification\Signature\Utils\Settings\CoreFields\Editor(), 'sanitize' ),
 			) );
 
 	}, 1000 );

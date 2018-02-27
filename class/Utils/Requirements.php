@@ -8,7 +8,7 @@
  * @package notification/signature
  */
 
-namespace underDEV\Notification\Signature\Utils;
+namespace BracketSpace\Notification\Signature\Utils;
 
 /**
  * Requirements class

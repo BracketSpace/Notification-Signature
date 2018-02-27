@@ -5,7 +5,7 @@
  * @package notification/signature
  */
 
-namespace underDEV\Notification\Signature\Utils\Cache;
+namespace BracketSpace\Notification\Signature\Utils\Cache;
 
 /**
  * Cache class

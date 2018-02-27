@@ -5,9 +5,9 @@
  * @package notification/signature
  */
 
-namespace underDEV\Notification\Signature\Utils;
+namespace BracketSpace\Notification\Signature\Utils;
 
-use underDEV\Notification\Signature\Utils\Settings\Section;
+use BracketSpace\Notification\Signature\Utils\Settings\Section;
 
 /**
  * Settings class

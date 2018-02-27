@@ -1,10 +1,10 @@
 === Notification : Signature ===
-Contributors: Kubitomakita
+Contributors: notification, bracketspace, Kubitomakita
 Donate link: https://www.paypal.me/underDEV/
 Tags: notification, notify, email, mail, signature
 Requires at least: 3.6
 Tested up to: 4.8
-Stable tag: 1.0
+Stable tag: 2.0.0
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -29,6 +29,9 @@ Download and install this plugin from Plugins -> Add New admin screen.
 1. Signature settings
 
 == Changelog ==
+
+= 2.0.0 =
+* Plugin compatibility with Notification 5.0.0
 
 = 1.0 =
 * Release

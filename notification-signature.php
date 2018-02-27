@@ -2,10 +2,9 @@
 /**
  * Plugin Name: Notification : Signature
  * Description: Add your own Signature to Notification Emails
- * Plugin URI: https://notification.underdev.it
  * Author: BracketSpace
- * Author URI: https://underdev.it
- * Version: 1.0
+ * Author URI: https://bracketspace.com
+ * Version: 2.0.0
  * License: GPL3
  * Text Domain: notification-signature
  * Domain Path: /languages

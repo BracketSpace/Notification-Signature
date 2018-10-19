@@ -4,7 +4,7 @@
  * Description: Add your own Signature to Notification Emails
  * Author: BracketSpace
  * Author URI: https://bracketspace.com
- * Version: 2.0.1
+ * Version: 2.0.2
  * License: GPL3
  * Text Domain: notification-signature
  * Domain Path: /languages
@@ -22,15 +22,15 @@ function notification_signature_autoload( $class ) {
 
 	$parts = explode( '\\', $class );
 
-	if ( array_shift( $parts ) != 'BracketSpace' ) {
+	if ( array_shift( $parts ) !== 'BracketSpace' ) {
 		return false;
 	}
 
-	if ( array_shift( $parts ) != 'Notification' ) {
+	if ( array_shift( $parts ) !== 'Notification' ) {
 		return false;
 	}
 
-	if ( array_shift( $parts ) != 'Signature' ) {
+	if ( array_shift( $parts ) !== 'Signature' ) {
 		return false;
 	}
 
@@ -68,7 +68,7 @@ add_action( 'after_setup_theme', function() {
 	 * @return void
 	 */
 	function notification_signature_check_base_plugin( $comparsion, $r ) {
-		if ( $comparsion === true && ! function_exists( 'notification_runtime' ) ) {
+		if ( true === $comparsion && ! function_exists( 'notification_runtime' ) ) {
 			$r->add_error( __( 'Notification plugin active', 'notification-signature' ) );
 		}
 	}
@@ -93,10 +93,10 @@ add_action( 'after_setup_theme', function() {
 				'slug'     => 'signature_enable',
 				'default'  => 'false',
 				'addons'   => array(
-					'label' => __( 'Add signature to every email', 'notification-signature' )
+					'label' => __( 'Add signature to every email', 'notification-signature' ),
 				),
-				'render'   => array( new BracketSpace\Notification\Signature\Utils\Settings\CoreFields\Checkbox(), 'input' ),
-				'sanitize' => array( new BracketSpace\Notification\Signature\Utils\Settings\CoreFields\Checkbox(), 'sanitize' ),
+				'render'   => array( new BracketSpace\Notification\Utils\Settings\CoreFields\Checkbox(), 'input' ),
+				'sanitize' => array( new BracketSpace\Notification\Utils\Settings\CoreFields\Checkbox(), 'sanitize' ),
 			) )
 			->add_field( array(
 				'name'        => __( 'Signature', 'notification-signature' ),
@@ -107,8 +107,8 @@ add_action( 'after_setup_theme', function() {
 					'tiny'          => true,
 				),
 				'description' => __( 'Please remember that images may not be rendered', 'notification-signature' ),
-				'render'      => array( new BracketSpace\Notification\Signature\Utils\Settings\CoreFields\Editor(), 'input' ),
-				'sanitize'    => array( new BracketSpace\Notification\Signature\Utils\Settings\CoreFields\Editor(), 'sanitize' ),
+				'render'      => array( new BracketSpace\Notification\Utils\Settings\CoreFields\Editor(), 'input' ),
+				'sanitize'    => array( new BracketSpace\Notification\Utils\Settings\CoreFields\Editor(), 'sanitize' ),
 			) );
 
 	}, 1000 );
@@ -131,6 +131,5 @@ add_action( 'after_setup_theme', function() {
 		return $message . '<br><br>' . $signature;
 
 	}, 10, 3 );
-
 
 } );

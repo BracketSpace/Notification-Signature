@@ -32,6 +32,7 @@ Download and install this plugin from Plugins -> Add New admin screen.
 
 = [Next] =
 * [Fixed] PHP 7.2 compatibility
+* [Fixed] WordPress Coding Standards compatibility
 
 = 2.0.1 =
 * Fix for wrong repository files

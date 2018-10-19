@@ -95,8 +95,8 @@ add_action( 'after_setup_theme', function() {
 				'addons'   => array(
 					'label' => __( 'Add signature to every email', 'notification-signature' )
 				),
-				'render'   => array( new BracketSpace\Notification\Signature\Utils\Settings\CoreFields\Checkbox(), 'input' ),
-				'sanitize' => array( new BracketSpace\Notification\Signature\Utils\Settings\CoreFields\Checkbox(), 'sanitize' ),
+				'render'   => array( new BracketSpace\Notification\Utils\Settings\CoreFields\Checkbox(), 'input' ),
+				'sanitize' => array( new BracketSpace\Notification\Utils\Settings\CoreFields\Checkbox(), 'sanitize' ),
 			) )
 			->add_field( array(
 				'name'        => __( 'Signature', 'notification-signature' ),
@@ -107,8 +107,8 @@ add_action( 'after_setup_theme', function() {
 					'tiny'          => true,
 				),
 				'description' => __( 'Please remember that images may not be rendered', 'notification-signature' ),
-				'render'      => array( new BracketSpace\Notification\Signature\Utils\Settings\CoreFields\Editor(), 'input' ),
-				'sanitize'    => array( new BracketSpace\Notification\Signature\Utils\Settings\CoreFields\Editor(), 'sanitize' ),
+				'render'      => array( new BracketSpace\Notification\Utils\Settings\CoreFields\Editor(), 'input' ),
+				'sanitize'    => array( new BracketSpace\Notification\Utils\Settings\CoreFields\Editor(), 'sanitize' ),
 			) );
 
 	}, 1000 );

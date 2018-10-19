@@ -30,6 +30,9 @@ Download and install this plugin from Plugins -> Add New admin screen.
 
 == Changelog ==
 
+= [Next] =
+* [Fixed] PHP 7.2 compatibility
+
 = 2.0.1 =
 * Fix for wrong repository files
 

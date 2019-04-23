@@ -1,12 +1,20 @@
-# Notification : Signature
+# Notification Extension Boilerplate
 
-![Notification banner](https://www.wpart.co/img/notification-signature.png)
+This is a starter for any [Notification plugin](https://wordpress.org/plugins/notification/) extension.
 
-This is public repository for Notification : Signature - the WordPress plugin.
+Just download it and use it for something awesome.
 
-This plugin allows to add signature to all emails sent by Notification plugin.
+[Download the Boilerplate](https://github.com/BracketSpace/Notification-Extension-Boilerplate/archive/master.zip)
 
 ---
 
-* [Notification plugin](https://github.com/Kubitomakita/Notification)
-* [WordPress readme](https://github.com/Kubitomakita/notification-signature/blob/master/readme.txt)
+It's packed with:
+
+* WordPress readme.txt init file
+* Composer class autoloader
+
+## Usage
+
+* Download
+* Unpack
+* Call rename.sh script to change all the names, namespaces and slugs in a few seconds

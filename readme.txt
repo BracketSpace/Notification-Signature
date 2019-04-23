@@ -1,10 +1,9 @@
 === Notification : Signature ===
 Contributors: notification, bracketspace, Kubitomakita
-Donate link: https://www.paypal.me/underDEV/
 Tags: notification, notify, email, mail, signature
 Requires at least: 3.6
 Tested up to: 4.8
-Stable tag: 2.0.2
+Stable tag: 2.1.0
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -29,6 +28,9 @@ Download and install this plugin from Plugins -> Add New admin screen.
 1. Signature settings
 
 == Changelog ==
+
+= 2.1.0 =
+* [Changed] Notification v6.0.0 compat.
 
 = 2.0.2 =
 * [Fixed] PHP 7.2 compatibility

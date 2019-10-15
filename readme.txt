@@ -29,6 +29,9 @@ Download and install this plugin from Plugins -> Add New admin screen.
 
 == Changelog ==
 
+= [Next] =
+* [Changed] Vendor relative path to absolute path.
+
 = 2.1.0 =
 * [Changed] Notification v6.0.0 compat.
 

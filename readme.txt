@@ -30,6 +30,7 @@ Download and install this plugin from Plugins -> Add New admin screen.
 == Changelog ==
 
 = [Next] =
+* [Changed] Notification v7 compatibility.
 * [Changed] Vendor relative path to absolute path.
 
 = 2.1.0 =

@@ -1,11 +1,11 @@
 <?php
 /**
- * Settings class
+ * Settings
  *
  * @package notification/signature
  */
 
-namespace BracketSpace\Notification\Signature\Core;
+namespace BracketSpace\Notification\Signature\Admin;
 
 use BracketSpace\Notification\Utils\Settings\CoreFields;
 
@@ -15,14 +15,15 @@ use BracketSpace\Notification\Utils\Settings\CoreFields;
 class Settings {
 
 	/**
-	 * Registers settings
+	 * Registers carrier settings
 	 *
-	 * @param object $settings Settings API object.
+	 * @since  [Next]
+	 * @param  object $settings Settings API object.
 	 * @return void
 	 */
-	public function register_settings( $settings ) {
+	public function register_carrier_settings( $settings ) {
 
-		$carriers = $settings->add_section( __( 'Carriers', 'notification' ), 'notifications' );
+		$carriers = $settings->add_section( __( 'Carriers', 'notification-signature' ), 'carriers' );
 
 		$carriers->add_group( __( 'Email', 'notification' ), 'email' )
 			->add_field( [

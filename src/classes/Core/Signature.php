@@ -24,11 +24,11 @@ class Signature {
 	 */
 	public function add( $message ) {
 
-		if ( ! notification_get_setting( 'notifications/email/signature_enable' ) ) {
+		if ( ! notification_get_setting( 'carriers/email/signature_enable' ) ) {
 			return $message;
 		}
 
-		$signature = notification_get_setting( 'notifications/email/signature' );
+		$signature = notification_get_setting( 'carriers/email/signature' );
 
 		if ( empty( $signature ) ) {
 			return $message;

@@ -1,8 +1,8 @@
-
 ### Project ###
+composer.lock
 *.log
 node_modules/
-src/assets/dist/
+/dist
 /vendor
 
 ### Windows ###

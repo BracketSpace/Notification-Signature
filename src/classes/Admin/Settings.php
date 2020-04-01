@@ -17,7 +17,7 @@ class Settings {
 	/**
 	 * Registers carrier settings
 	 *
-	 * @since  [Next]
+	 * @since  2.2.0
 	 * @param  object $settings Settings API object.
 	 * @return void
 	 */

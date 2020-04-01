@@ -5,7 +5,7 @@
  * Plugin URI: https://bracketspace.com
  * Author: BracketSpace
  * Author URI: https://bracketspace.com
- * Version: 2.1.0
+ * Version: 2.2.0
  * License: GPL3
  * Text Domain: notification-signature
  * Domain Path: /languages
@@ -30,7 +30,7 @@ if ( ! class_exists( 'NotificationSignature' ) ) :
 		/**
 		 * Initializes the plugin runtime
 		 *
-		 * @since  [Next]
+		 * @since  2.2.0
 		 * @param  string $plugin_file Main plugin file.
 		 * @return BracketSpace\Notification\Signature\Runtime
 		 */
@@ -47,7 +47,7 @@ if ( ! class_exists( 'NotificationSignature' ) ) :
 		/**
 		 * Gets runtime component
 		 *
-		 * @since  [Next]
+		 * @since  2.2.0
 		 * @return array
 		 */
 		public static function components() {
@@ -57,7 +57,7 @@ if ( ! class_exists( 'NotificationSignature' ) ) :
 		/**
 		 * Gets runtime component
 		 *
-		 * @since  [Next]
+		 * @since  2.2.0
 		 * @param  string $component_name Component name.
 		 * @return mixed
 		 */
@@ -68,7 +68,7 @@ if ( ! class_exists( 'NotificationSignature' ) ) :
 		/**
 		 * Gets runtime object
 		 *
-		 * @since  [Next]
+		 * @since  2.2.0
 		 * @return BracketSpace\Notification\Runtime
 		 */
 		public static function runtime() {

@@ -43,7 +43,7 @@ class Runtime {
 	/**
 	 * Class constructor
 	 *
-	 * @since [Next]
+	 * @since 2.2.0
 	 * @param string $plugin_file plugin main file full path.
 	 */
 	public function __construct( $plugin_file ) {
@@ -53,7 +53,7 @@ class Runtime {
 	/**
 	 * Loads needed files
 	 *
-	 * @since  [Next]
+	 * @since  2.2.0
 	 * @return void
 	 */
 	public function init() {
@@ -89,7 +89,7 @@ class Runtime {
 	/**
 	 * Registers all the hooks with DocHooks
 	 *
-	 * @since  [Next]
+	 * @since  2.2.0
 	 * @return void
 	 */
 	public function register_hooks() {
@@ -107,7 +107,7 @@ class Runtime {
 	/**
 	 * Sets up the plugin filesystems
 	 *
-	 * @since  [Next]
+	 * @since  2.2.0
 	 * @return void
 	 */
 	public function filesystems() {
@@ -124,7 +124,7 @@ class Runtime {
 	/**
 	 * Gets filesystem
 	 *
-	 * @since  [Next]
+	 * @since  2.2.0
 	 * @param  string $name Filesystem name.
 	 * @return Filesystem|null
 	 */
@@ -135,7 +135,7 @@ class Runtime {
 	/**
 	 * Adds runtime component
 	 *
-	 * @since  [Next]
+	 * @since  2.2.0
 	 * @throws \Exception When component is already registered.
 	 * @param  string $name      Component name.
 	 * @param  mixed  $component Component.
@@ -156,7 +156,7 @@ class Runtime {
 	/**
 	 * Gets runtime component
 	 *
-	 * @since  [Next]
+	 * @since  2.2.0
 	 * @param  string $name Component name.
 	 * @return mixed        Component or null
 	 */
@@ -167,7 +167,7 @@ class Runtime {
 	/**
 	 * Gets runtime components
 	 *
-	 * @since  [Next]
+	 * @since  2.2.0
 	 * @return array
 	 */
 	public function components() {
@@ -178,7 +178,7 @@ class Runtime {
 	 * Creates needed classes
 	 * Singletons are used for a sake of performance
 	 *
-	 * @since  [Next]
+	 * @since  2.2.0
 	 * @return void
 	 */
 	public function singletons() {
@@ -192,7 +192,7 @@ class Runtime {
 	/**
 	 * All WordPress actions this plugin utilizes
 	 *
-	 * @since  [Next]
+	 * @since  2.2.0
 	 * @return void
 	 */
 	public function actions() {

@@ -14,13 +14,13 @@
 		]
 	},
 	"require": {
-		"typisttech/imposter-plugin": "^0.5.0",
+		"typisttech/imposter-plugin": "^0.6.2",
 		"micropackage/requirements": "^1.0",
 		"micropackage/dochooks": "^1.0",
 		"micropackage/filesystem": "^1.1"
 	},
 	"require-dev": {
-		"dealerdirect/phpcodesniffer-composer-installer": "^0.5.0",
+		"dealerdirect/phpcodesniffer-composer-installer": "^0.7.0",
 		"phpcompatibility/php-compatibility": "^9.1",
 		"wp-coding-standards/wpcs": "^2.0"
 	},

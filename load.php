@@ -8,7 +8,7 @@
 /**
  * Load the main plugin file.
  */
-require_once __DIR__ . '/signature-notification.php';
+require_once __DIR__ . '/notification-signature.php';
 
 /**
  * Initialize early.

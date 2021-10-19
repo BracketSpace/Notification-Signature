@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "49585b9a3b66ebf9c008621278fa5908",
+    "content-hash": "93e3147b35f064907cd7bac646859dff",
     "packages": [
         {
             "name": "micropackage/dochooks",
@@ -144,16 +144,16 @@
         },
         {
             "name": "micropackage/requirements",
-            "version": "1.0.3",
+            "version": "1.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/micropackage/requirements.git",
-                "reference": "86ad5fcfdbe2c89eaab4c0895d122957fde1de82"
+                "reference": "855b21b6df8f48fa82528dd073ed1b29a645d2ee"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/micropackage/requirements/zipball/86ad5fcfdbe2c89eaab4c0895d122957fde1de82",
-                "reference": "86ad5fcfdbe2c89eaab4c0895d122957fde1de82",
+                "url": "https://api.github.com/repos/micropackage/requirements/zipball/855b21b6df8f48fa82528dd073ed1b29a645d2ee",
+                "reference": "855b21b6df8f48fa82528dd073ed1b29a645d2ee",
                 "shasum": ""
             },
             "require": {
@@ -186,9 +186,9 @@
             "description": "Requirements checker for WordPress plugins",
             "support": {
                 "issues": "https://github.com/micropackage/requirements/issues",
-                "source": "https://github.com/micropackage/requirements/tree/1.0.3"
+                "source": "https://github.com/micropackage/requirements/tree/1.1.0"
             },
-            "time": "2020-02-04T20:14:06+00:00"
+            "time": "2021-07-08T17:37:55+00:00"
         },
         {
             "name": "typisttech/imposter",
@@ -437,6 +437,59 @@
             "time": "2020-12-07T18:04:37+00:00"
         },
         {
+            "name": "jakub-onderka/php-parallel-lint",
+            "version": "v1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/JakubOnderka/PHP-Parallel-Lint.git",
+                "reference": "04fbd3f5fb1c83f08724aa58a23db90bd9086ee8"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/JakubOnderka/PHP-Parallel-Lint/zipball/04fbd3f5fb1c83f08724aa58a23db90bd9086ee8",
+                "reference": "04fbd3f5fb1c83f08724aa58a23db90bd9086ee8",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.3"
+            },
+            "require-dev": {
+                "jakub-onderka/php-console-highlighter": "~0.3",
+                "nette/tester": "~1.3",
+                "squizlabs/php_codesniffer": "~2.7"
+            },
+            "suggest": {
+                "jakub-onderka/php-console-highlighter": "Highlight syntax in code snippet"
+            },
+            "bin": [
+                "parallel-lint"
+            ],
+            "type": "library",
+            "autoload": {
+                "classmap": [
+                    "./"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-2-Clause"
+            ],
+            "authors": [
+                {
+                    "name": "Jakub Onderka",
+                    "email": "ahoj@jakubonderka.cz"
+                }
+            ],
+            "description": "This tool check syntax of PHP files about 20x faster than serial check.",
+            "homepage": "https://github.com/JakubOnderka/PHP-Parallel-Lint",
+            "support": {
+                "issues": "https://github.com/JakubOnderka/PHP-Parallel-Lint/issues",
+                "source": "https://github.com/JakubOnderka/PHP-Parallel-Lint/tree/master"
+            },
+            "abandoned": "php-parallel-lint/php-parallel-lint",
+            "time": "2018-02-24T15:31:20+00:00"
+        },
+        {
             "name": "phpcompatibility/php-compatibility",
             "version": "9.3.5",
             "source": {
@@ -500,16 +553,16 @@
         },
         {
             "name": "squizlabs/php_codesniffer",
-            "version": "3.5.8",
+            "version": "3.6.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/squizlabs/PHP_CodeSniffer.git",
-                "reference": "9d583721a7157ee997f235f327de038e7ea6dac4"
+                "reference": "f268ca40d54617c6e06757f83f699775c9b3ff2e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/squizlabs/PHP_CodeSniffer/zipball/9d583721a7157ee997f235f327de038e7ea6dac4",
-                "reference": "9d583721a7157ee997f235f327de038e7ea6dac4",
+                "url": "https://api.github.com/repos/squizlabs/PHP_CodeSniffer/zipball/f268ca40d54617c6e06757f83f699775c9b3ff2e",
+                "reference": "f268ca40d54617c6e06757f83f699775c9b3ff2e",
                 "shasum": ""
             },
             "require": {
@@ -552,7 +605,7 @@
                 "source": "https://github.com/squizlabs/PHP_CodeSniffer",
                 "wiki": "https://github.com/squizlabs/PHP_CodeSniffer/wiki"
             },
-            "time": "2020-10-23T02:01:07+00:00"
+            "time": "2021-10-11T04:00:11+00:00"
         },
         {
             "name": "wp-coding-standards/wpcs",
@@ -611,7 +664,9 @@
     "stability-flags": [],
     "prefer-stable": false,
     "prefer-lowest": false,
-    "platform": [],
+    "platform": {
+        "php": "^7.0"
+    },
     "platform-dev": [],
     "plugin-api-version": "2.0.0"
 }

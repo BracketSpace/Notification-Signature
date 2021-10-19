@@ -2,7 +2,7 @@
 /**
  * Custom requirement
  *
- * @package notification-signature
+ * @package notification/signature
  */
 
 namespace BracketSpace\Notification\Signature\Requirements;

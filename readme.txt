@@ -29,6 +29,9 @@ Download and install this plugin from Plugins -> Add New admin screen.
 
 == Changelog ==
 
+= [Next] =
+* [Changed] Plugin codebase to match Notification v8 internal API.
+
 = 2.2.0 =
 * [Changed] Notification v7 compatibility.
 * [Changed] Vendor relative path to absolute path.

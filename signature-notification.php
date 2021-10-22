@@ -5,7 +5,7 @@
  * Plugin URI: https://bracketspace.com
  * Author: BracketSpace
  * Author URI: https://bracketspace.com
- * Version: 2.2.0
+ * Version: 3.0.0
  * License: GPL3
  * Text Domain: notification-signature
  * Domain Path: /languages

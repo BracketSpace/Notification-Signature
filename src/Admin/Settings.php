@@ -22,7 +22,6 @@ class Settings {
 	 * @return void
 	 */
 	public function register_carrier_settings( $settings ) {
-
 		$carriers = $settings->add_section( __( 'Carriers', 'notification-signature' ), 'carriers' );
 
 		$carriers->add_group( __( 'Email', 'notification' ), 'email' )
@@ -48,7 +47,6 @@ class Settings {
 				'render'      => [ new CoreFields\Editor(), 'input' ],
 				'sanitize'    => [ new CoreFields\Editor(), 'sanitize' ],
 			] );
-
 	}
 
 }

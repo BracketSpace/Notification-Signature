@@ -2,8 +2,8 @@
 Contributors: notification, bracketspace, Kubitomakita
 Tags: notification, notify, email, mail, signature
 Requires at least: 3.6
-Tested up to: 4.8
-Stable tag: 2.2.0
+Tested up to: 5.6
+Stable tag: 3.0.0
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -28,6 +28,9 @@ Download and install this plugin from Plugins -> Add New admin screen.
 1. Signature settings
 
 == Changelog ==
+
+= 3.0.0 =
+* [Changed] Plugin codebase to match Notification v8 internal API.
 
 = 2.2.0 =
 * [Changed] Notification v7 compatibility.

@@ -27,7 +27,7 @@ Download and install this plugin from Plugins -> Add New admin screen.
 
 = Does this plugin need any other plugins? =
 
-Yes, this plugin is an extension for [Notification plugin](https://wordpress.org/plugins/notification/) so you need it active. You also need the bbPress plugin.
+Yes, this plugin is an extension for [Notification plugin](https://wordpress.org/plugins/notification/) so you need it active.
 
 = Can you create a plugin for me? =
 

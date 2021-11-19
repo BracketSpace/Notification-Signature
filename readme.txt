@@ -2,7 +2,7 @@
 Contributors: notification, bracketspace, Kubitomakita
 Tags: notification, notify, email, mail, signature
 Requires at least: 3.6
-Tested up to: 5.6
+Tested up to: 5.8
 Stable tag: 3.0.0
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
@@ -11,17 +11,27 @@ Add your own Signature to Notification Emails
 
 == Description ==
 
-This plugin allows to add signature to all emails sent by [Notification plugin](https://wordpress.org/plugins/notification/).
+This plugin allows to add signature to all emails sent by [Notification WordPress plugin](https://bracketspace.com/notification/).
+
+= Custom development =
+
+BracketSpace - the company behind this plugin provides [custom WordPress plugin development services](https://bracketspace.com/custom-development/). We can create any custom plugin for you.
 
 == Installation ==
 
-= Requirements =
-
-This plugin require at least PHP 5.3.0.
-
-= Plugin install =
+Make sure you have the [Notification plugin](https://wordpress.org/plugins/notification/) active.
 
 Download and install this plugin from Plugins -> Add New admin screen.
+
+== Frequently Asked Questions ==
+
+= Does this plugin need any other plugins? =
+
+Yes, this plugin is an extension for [Notification plugin](https://wordpress.org/plugins/notification/) so you need it active. You also need the bbPress plugin.
+
+= Can you create a plugin for me? =
+
+Yes! We're offering a [custom plugin development](https://bracketspace.com/custom-development/) services. Feel free to contact us to find out how we can help you.
 
 == Screenshots ==
 

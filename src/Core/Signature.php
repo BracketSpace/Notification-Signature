@@ -5,15 +5,15 @@
  * @package notification/signature
  */
 
-namespace BracketSpace\Notification\Signature\Core;
+declare(strict_types=1);
 
-use BracketSpace\Notification\Utils\Files;
+namespace BracketSpace\Notification\Signature\Core;
 
 /**
  * Signature class
  */
-class Signature {
-
+class Signature
+{
 	/**
 	 * Adds the signature to email message
 	 *
@@ -22,20 +22,18 @@ class Signature {
 	 * @param  string $message Email message.
 	 * @return string          Message with signature applied
 	 */
-	public function add( $message ) {
-
-		if ( ! notification_get_setting( 'carriers/email/signature_enable' ) ) {
+	public function add($message)
+	{
+		if (! \Notification::settings()->getSetting('carriers/email/signature_enable')) {
 			return $message;
 		}
 
-		$signature = notification_get_setting( 'carriers/email/signature' );
+		$signature = \Notification::settings()->getSetting('carriers/email/signature');
 
-		if ( empty( $signature ) ) {
+		if (empty($signature)) {
 			return $message;
 		}
 
 		return $message . '<br><br>' . $signature;
-
 	}
-
 }

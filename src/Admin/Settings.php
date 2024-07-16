@@ -5,6 +5,8 @@
  * @package notification/signature
  */
 
+declare(strict_types=1);
+
 namespace BracketSpace\Notification\Signature\Admin;
 
 use BracketSpace\Notification\Utils\Settings\CoreFields;
@@ -12,41 +14,47 @@ use BracketSpace\Notification\Utils\Settings\CoreFields;
 /**
  * Settings class
  */
-class Settings {
-
+class Settings
+{
 	/**
 	 * Registers carrier settings
 	 *
+	 * @action notification/settings/register 30
+	 *
 	 * @since  2.2.0
-	 * @param  object $settings Settings API object.
+	 * @param  \BracketSpace\Notification\Utils\Settings $settings Settings API object.
 	 * @return void
 	 */
-	public function register_carrier_settings( $settings ) {
-		$carriers = $settings->add_section( __( 'Carriers', 'notification-signature' ), 'carriers' );
+	public function registerCarrierSettings($settings)
+	{
+		$carriers = $settings->addSection(__('Carriers', 'notification-signature'), 'carriers');
 
-		$carriers->add_group( __( 'Email', 'notification' ), 'email' )
-			->add_field( [
-				'name'     => __( 'Enable signature', 'notification-signature' ),
-				'slug'     => 'signature_enable',
-				'default'  => 'false',
-				'addons'   => [
-					'label' => __( 'Add signature to every email', 'notification-signature' ),
+		$carriers->addGroup(__('Email', 'notification'), 'email')
+			->addField(
+				[
+				'name' => __('Enable signature', 'notification-signature'),
+				'slug' => 'signature_enable',
+				'default' => 'false',
+				'addons' => [
+					'label' => __('Add signature to every email', 'notification-signature'),
 				],
-				'render'   => [ new CoreFields\Checkbox(), 'input' ],
+				'render' => [ new CoreFields\Checkbox(), 'input' ],
 				'sanitize' => [ new CoreFields\Checkbox(), 'sanitize' ],
-			] )
-			->add_field( [
-				'name'        => __( 'Signature', 'notification-signature' ),
-				'slug'        => 'signature',
-				'addons'      => [
-					'wpautop'       => true,
+				]
+			)
+			->addField(
+				[
+				'name' => __('Signature', 'notification-signature'),
+				'slug' => 'signature',
+				'addons' => [
+					'wpautop' => true,
 					'media_buttons' => false,
-					'tiny'          => true,
+					'tiny' => true,
 				],
-				'description' => __( 'Please remember that images may not be rendered', 'notification-signature' ),
-				'render'      => [ new CoreFields\Editor(), 'input' ],
-				'sanitize'    => [ new CoreFields\Editor(), 'sanitize' ],
-			] );
+				'description' => __('Please remember that images may not be rendered', 'notification-signature'),
+				'render' => [ new CoreFields\Editor(), 'input' ],
+				'sanitize' => [ new CoreFields\Editor(), 'sanitize' ],
+				]
+			);
 	}
-
 }

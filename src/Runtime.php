@@ -5,19 +5,23 @@
  * @package notification/signature
  */
 
+declare(strict_types=1);
+
 namespace BracketSpace\Notification\Signature;
 
-use BracketSpace\Notification\Signature\Vendor\Micropackage\Requirements\Requirements as RequirementsEngine;
-use BracketSpace\Notification\Signature\Vendor\Micropackage\DocHooks\HookTrait;
-use BracketSpace\Notification\Signature\Vendor\Micropackage\DocHooks\Helper as DocHooksHelper;
-use BracketSpace\Notification\Signature\Vendor\Micropackage\Filesystem\Filesystem;
-use BracketSpace\Notification\Signature\Vendor\Micropackage\Internationalization\Internationalization;
+use BracketSpace\Notification\Signature\Dependencies\Micropackage\Requirements\Requirements as RequirementsEngine;
+use BracketSpace\Notification\Signature\Dependencies\Micropackage\DocHooks\HookTrait;
+use BracketSpace\Notification\Signature\Dependencies\Micropackage\DocHooks\Helper as DocHooksHelper;
+use BracketSpace\Notification\Signature\Dependencies\Micropackage\Filesystem\Filesystem;
+use BracketSpace\Notification\Signature\Dependencies\Micropackage\Internationalization\Internationalization;
 
 /**
  * Runtime class
+ *
+ * @since  1.0.0
  */
-class Runtime {
-
+class Runtime
+{
 	use HookTrait;
 
 	/**
@@ -25,14 +29,14 @@ class Runtime {
 	 *
 	 * @var string
 	 */
-	protected $plugin_file;
+	protected $pluginFile;
 
 	/**
 	 * Flag for unmet requirements
 	 *
 	 * @var bool
 	 */
-	protected $requirements_unmet;
+	protected $requirementsUnmet;
 
 	/**
 	 * Filesystems
@@ -44,7 +48,7 @@ class Runtime {
 	/**
 	 * Components
 	 *
-	 * @var array<string,mixed>
+	 * @var array<class-string, object>
 	 */
 	protected $components = [];
 
@@ -52,106 +56,124 @@ class Runtime {
 	 * Class constructor
 	 *
 	 * @since 3.0.0
-	 * @param string $plugin_file Plugin main file full path.
+	 * @param string $pluginFile Plugin main file full path.
 	 */
-	public function __construct( $plugin_file ) {
-		$this->plugin_file = $plugin_file;
+	public function __construct($pluginFile)
+	{
+		$this->pluginFile = $pluginFile;
 	}
 
 	/**
 	 * Loads needed files
 	 *
-	 * @since  3.0.0
+	 * @since 3.0.0
 	 * @return void
 	 */
-	public function init() {
-
+	public function init()
+	{
 		// Plugin has been already initialized.
-		if ( did_action( 'notification/signature/init' ) || $this->requirements_unmet ) {
+		if (did_action('notification/signature/init') || $this->requirementsUnmet) {
 			return;
 		}
 
 		// Requirements check.
-		$requirements = new RequirementsEngine( __( 'Notification : Signature', 'notification-signature' ), [
-			'php'          => '7.0',
-			'wp'           => '5.3',
-			'notification' => '8.0.0',
-		] );
+		$requirements = new RequirementsEngine(
+			__('Notification : Signature', 'notification-signature'),
+			[
+				'php' => '7.4',
+				'wp' => '5.3',
+				'notification' => '9.0.0',
+			]
+		);
 
-		$requirements->register_checker( Requirements\BasePlugin::class );
+		$requirements->register_checker(Requirements\BasePlugin::class);
 
-		if ( ! $requirements->satisfied() ) {
+		if (! $requirements->satisfied()) {
 			$requirements->print_notice();
-			$this->requirements_unmet = true;
+			$this->requirementsUnmet = true;
 			return;
 		}
 
-		$this->filesystem = new Filesystem( dirname( $this->plugin_file ) );
+		$this->filesystem = new Filesystem(dirname($this->pluginFile));
 		$this->singletons();
-		$this->cli_commands();
+		$this->cliCommands();
 		$this->actions();
 
-		do_action( 'notification/signature/init' );
-
+		do_action('notification/signature/init');
 	}
 
 	/**
 	 * Registers WP CLI commands
 	 *
-	 * @since  3.0.0
+	 * @since 3.0.0
 	 * @return void
 	 */
-	public function cli_commands() {
-		if ( ! defined( 'WP_CLI' ) || \WP_CLI !== true ) {
+	public function cliCommands()
+	{
+		if (! defined('WP_CLI') || \WP_CLI !== true) {
 			return;
 		}
 
-		\WP_CLI::add_command( 'notification-signature dump-hooks', Cli\DumpHooks::class );
+		\WP_CLI::add_command('notification-signature dump-hooks', Cli\DumpHooks::class);
 	}
 
 	/**
 	 * Registers all the hooks with DocHooks
 	 *
-	 * @since  3.0.0
+	 * @since 3.0.0
 	 * @return void
 	 */
-	public function register_hooks() {
+	public function registerHooks()
+	{
 		// Hook Runtime.
 		$this->add_hooks();
 
 		// Hook all the components.
-		foreach ( $this->components as $component ) {
-			if ( is_object( $component ) ) {
-				$this->add_hooks( $component );
+		foreach ($this->components as $component) {
+			if (! is_object($component)) {
+				continue;
 			}
+
+			$this->add_hooks($component);
 		}
 	}
 
 	/**
 	 * Gets filesystem
 	 *
-	 * @since  3.0.0
-	 * @return Filesystem|null
+	 * @since 3.0.0
+	 * @return Filesystem
 	 */
-	public function get_filesystem() {
+	public function getFilesystem()
+	{
+		if ($this->filesystem === null) {
+			throw new \Exception('Filesystem has not been invoked yet.');
+		}
+
 		return $this->filesystem;
 	}
 
 	/**
 	 * Adds runtime component
 	 *
-	 * @since  3.0.0
+	 * @since 3.0.0
 	 * @throws \Exception When component is already registered.
-	 * @param  string $name      Component name.
-	 * @param  mixed  $component Component.
+	 * @param mixed $component Component.
 	 * @return $this
 	 */
-	public function add_component( $name, $component ) {
-		if ( isset( $this->components[ $name ] ) ) {
-			throw new \Exception( sprintf( 'Component %s is already added.', $name ) );
+	public function addComponent($component)
+	{
+		if (! is_object($component)) {
+			throw new \Exception('Component has to be an object.');
 		}
 
-		$this->components[ $name ] = $component;
+		$name = get_class($component);
+
+		if (isset($this->components[$name])) {
+			throw new \Exception(sprintf('Component %s is already added.', $name));
+		}
+
+		$this->components[$name] = $component;
 
 		return $this;
 	}
@@ -159,21 +181,23 @@ class Runtime {
 	/**
 	 * Gets runtime component
 	 *
-	 * @since  3.0.0
-	 * @param  string $name Component name.
-	 * @return mixed        Component or null
+	 * @since 3.0.0
+	 * @param string $name Component name.
+	 * @return object|null Component or null
 	 */
-	public function component( $name ) {
-		return isset( $this->components[ $name ] ) ? $this->components[ $name ] : null;
+	public function component($name)
+	{
+		return $this->components[$name] ?? null;
 	}
 
 	/**
 	 * Gets runtime components
 	 *
-	 * @since  3.0.0
-	 * @return array
+	 * @since 3.0.0
+	 * @return array<class-string, object>
 	 */
-	public function components() {
+	public function components()
+	{
 		return $this->components;
 	}
 
@@ -181,29 +205,33 @@ class Runtime {
 	 * Creates needed classes
 	 * Singletons are used for a sake of performance
 	 *
-	 * @since  3.0.0
+	 * @since 3.0.0
 	 * @return void
 	 */
-	public function singletons() {
-		$this->add_component( 'admin/settings', new Admin\Settings() );
-		$this->add_component( 'core/signature', new Core\Signature() );
+	public function singletons()
+	{
+		$this->addComponent(
+			new Internationalization('notification-signature', $this->getFilesystem()->path('resources/languages'))
+		);
+		$this->addComponent(new Admin\Settings());
+		$this->addComponent(new Core\Signature());
 	}
 
 	/**
 	 * All WordPress actions this plugin utilizes
 	 *
-	 * @since  3.0.0
+	 * @since 3.0.0
 	 * @return void
 	 */
-	public function actions() {
-		$this->register_hooks();
-
-		notification_register_settings( [ $this->component( 'admin/settings' ), 'register_carrier_settings' ], 30 );
+	public function actions()
+	{
+		$this->registerHooks();
 
 		// DocHooks compatibility.
-		if ( ! DocHooksHelper::is_enabled() && $this->get_filesystem()->exists( 'compat/register-hooks.php' ) ) {
-			include_once $this->get_filesystem()->path( 'compat/register-hooks.php' );
+		if (DocHooksHelper::is_enabled() || !$this->getFilesystem()->exists('compat/register-hooks.php')) {
+			return;
 		}
-	}
 
+		include_once $this->getFilesystem()->path('compat/register-hooks.php');
+	}
 }

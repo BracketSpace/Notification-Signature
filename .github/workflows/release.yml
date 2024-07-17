@@ -12,8 +12,6 @@ jobs:
     name: Release
     runs-on: ubuntu-latest
     steps:
-      - name: Set PHP version
-        run: sudo update-alternatives --set php /usr/bin/php7.4
       - name: Checkout master
         uses: actions/checkout@v1
         with:
@@ -33,7 +31,7 @@ jobs:
         run: git flow init -d
       - name: Start release
         run: git flow release start ${{ github.event.inputs.new_version }}
-      - name: Replace 3.0.0 tags with new version number
+      - name: Replace Next tags with new version number
         uses: jacobtomlinson/gha-find-replace@master
         with:
           find: "(?i)\\[Next\\]"
@@ -50,6 +48,12 @@ jobs:
           find: "Version: [0-9]+.[0-9]+.[0-9]+"
           replace: "Version: ${{ github.event.inputs.new_version }}"
           include: "${{ secrets.SLUG }}.php"
+      - name: Replace constant tag in Runtime file
+        uses: jacobtomlinson/gha-find-replace@master
+        with:
+          find: "VERSION = '[0-9]+.[0-9]+.[0-9]+'"
+          replace: "VERSION = '${{ github.event.inputs.new_version }}'"
+          include: "src/classes/Runtime.php"
       - name: Commit version bump
         run: git commit -am "Version bump"
       - name: Finish release

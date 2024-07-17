@@ -40,7 +40,7 @@ Yes! We're offering a [custom plugin development](https://bracketspace.com/custo
 == Changelog ==
 
 = [Next] =
-_ [Changed] Notification v9 compatibility.
+* [Changed] Notification v9 compatibility.
 
 = 3.0.0 =
 * [Changed] Plugin codebase to match Notification v8 internal API.

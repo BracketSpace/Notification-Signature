@@ -13,7 +13,6 @@ use BracketSpace\Notification\Signature\Dependencies\Micropackage\Requirements\R
 use BracketSpace\Notification\Signature\Dependencies\Micropackage\DocHooks\HookTrait;
 use BracketSpace\Notification\Signature\Dependencies\Micropackage\DocHooks\Helper as DocHooksHelper;
 use BracketSpace\Notification\Signature\Dependencies\Micropackage\Filesystem\Filesystem;
-use BracketSpace\Notification\Signature\Dependencies\Micropackage\Internationalization\Internationalization;
 
 /**
  * Runtime class
@@ -210,9 +209,6 @@ class Runtime
 	 */
 	public function singletons()
 	{
-		$this->addComponent(
-			new Internationalization('notification-signature', $this->getFilesystem()->path('resources/languages'))
-		);
 		$this->addComponent(new Admin\Settings());
 		$this->addComponent(new Core\Signature());
 	}

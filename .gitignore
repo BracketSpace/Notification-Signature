@@ -5,7 +5,6 @@ yarn.lock
 /dependencies/*
 !/dependencies/.gitkeep
 node_modules/
-resources/*/dist/
 /vendor
 
 ### Windows ###

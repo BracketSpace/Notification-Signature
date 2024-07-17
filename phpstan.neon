@@ -8,7 +8,7 @@ parameters:
 		- compat/notification-stubs.php
 		- vendor/php-stubs/wp-cli-stubs/wp-cli-stubs.php
 	paths:
-		- notification-signature.php
+		- signature-notification.php
 		- load.php
 		- uninstall.php
 		- src/

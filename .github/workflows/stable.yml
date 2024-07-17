@@ -26,15 +26,6 @@ jobs:
         composer-options: "--no-dev"
     - name: Run Strauss
       run: composer run-script prefix-namespaces-prod
-    - name: Setup Node
-      uses: actions/setup-node@v4
-      with:
-        node-version: '16'
-        cache: yarn
-    - name: Install yarn dependencies
-      run: yarn install --immutable
-    - name: Build static assets
-      run: yarn build:production
     - name: Create build dir
       run: mkdir build
     - name: Copy files

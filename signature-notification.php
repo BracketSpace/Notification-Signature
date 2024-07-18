@@ -9,6 +9,7 @@
  * License: GPL3
  * Text Domain: notification-signature
  * Domain Path: /languages
+ * Requires Plugins: notification
  *
  * @package notification/signature
  *

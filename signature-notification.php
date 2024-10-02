@@ -5,25 +5,32 @@
  * Plugin URI: https://bracketspace.com
  * Author: BracketSpace
  * Author URI: https://bracketspace.com
- * Version: 3.0.0
+ * Version: 4.0.0
  * License: GPL3
  * Text Domain: notification-signature
  * Domain Path: /languages
+ * Requires Plugins: notification
  *
  * @package notification/signature
+ *
+ * phpcs:disable PSR1.Files.SideEffects.FoundWithSymbols
+ * phpcs:disable PSR1.Classes.ClassDeclaration.MissingNamespace
+ * phpcs:disable Squiz.Classes.ClassFileName.NoMatch
  */
 
-if ( ! class_exists( 'NotificationSignature' ) ) :
+declare(strict_types=1);
+
+if (! class_exists('NotificationSignature')) :
 
 	/**
 	 * NotificationSignature class
 	 */
-	class NotificationSignature {
-
+	class NotificationSignature
+	{
 		/**
 		 * Runtime object
 		 *
-		 * @var BracketSpace\Notification\Signature\Runtime
+		 * @var ?BracketSpace\Notification\Signature\Runtime
 		 */
 		protected static $runtime;
 
@@ -31,14 +38,15 @@ if ( ! class_exists( 'NotificationSignature' ) ) :
 		 * Initializes the plugin runtime
 		 *
 		 * @since  2.2.0
-		 * @param  string $plugin_file Main plugin file.
+		 * @param  string $pluginFile Main plugin file.
 		 * @return BracketSpace\Notification\Signature\Runtime
 		 */
-		public static function init( $plugin_file ) {
-			if ( ! isset( self::$runtime ) ) {
+		public static function init($pluginFile)
+		{
+			if (self::$runtime === null) {
 				// Autoloading.
-				require_once dirname( $plugin_file ) . '/vendor/autoload.php';
-				self::$runtime = new BracketSpace\Notification\Signature\Runtime( $plugin_file );
+				require_once dirname($pluginFile) . '/vendor/autoload.php';
+				self::$runtime = new BracketSpace\Notification\Signature\Runtime($pluginFile);
 			}
 
 			return self::$runtime;
@@ -48,37 +56,59 @@ if ( ! class_exists( 'NotificationSignature' ) ) :
 		 * Gets runtime component
 		 *
 		 * @since  2.2.0
-		 * @return array
+		 * @return array<class-string,mixed>
 		 */
-		public static function components() {
-			return isset( self::$runtime ) ? self::$runtime->components() : [];
+		public static function components()
+		{
+			return self::$runtime !== null ? self::$runtime->components() : [];
 		}
 
 		/**
 		 * Gets runtime component
 		 *
 		 * @since  2.2.0
-		 * @param  string $component_name Component name.
+		 * @param  string $componentName Component name.
 		 * @return mixed
 		 */
-		public static function component( $component_name ) {
-			return isset( self::$runtime ) ? self::$runtime->component( $component_name ) : null;
+		public static function component($componentName)
+		{
+			return self::$runtime !== null ? self::$runtime->component($componentName) : null;
 		}
 
 		/**
 		 * Gets runtime object
 		 *
 		 * @since  2.2.0
-		 * @return BracketSpace\Notification\Runtime
+		 * @return ?BracketSpace\Notification\Signature\Runtime
 		 */
-		public static function runtime() {
+		public static function runtime()
+		{
 			return self::$runtime;
 		}
 
+		/**
+		 * Gets plugin filesystem
+		 *
+		 * @since  4.0.0
+		 * @throws \Exception When runtime wasn't invoked yet.
+		 * @return \BracketSpace\Notification\Signature\Dependencies\Micropackage\Filesystem\Filesystem
+		 */
+		public static function fs()
+		{
+			if (self::$runtime === null) {
+				throw new \Exception('Runtime has not been invoked yet.');
+			}
+
+			return self::$runtime->getFilesystem();
+		}
 	}
 
 endif;
 
-add_action( 'notification/init', function() {
-	NotificationSignature::init( __FILE__ )->init();
-}, 2 );
+add_action(
+	'notification/init',
+	static function () {
+		NotificationSignature::init(__FILE__)->init();
+	},
+	2
+);

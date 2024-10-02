@@ -1,8 +1,10 @@
 ### Project ###
 composer.lock
+yarn.lock
 *.log
+/dependencies/*
+!/dependencies/.gitkeep
 node_modules/
-/dist
 /vendor
 
 ### Windows ###

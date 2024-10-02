@@ -6,30 +6,25 @@ on:
       - develop
 
 jobs:
-
   # Builds the package and creates artifact with dist files
   build:
     name: Build
     runs-on: ubuntu-latest
     steps:
-    - name: Set PHP version
-      run: sudo update-alternatives --set php /usr/bin/php7.4
     - name: Checkout
       uses: actions/checkout@v2
-    - name: Install OS dependencies
-      run: sudo apt-get install zip -y
-    - name: Setup variables
-      id: vars
-      run: |
-        echo "::set-output name=composer-cache-path::$(composer config cache-files-dir)"
-    - name: Cache Composer
-      uses: actions/cache@v1
+    - name: Setup PHP
+      uses: shivammathur/setup-php@v2
       with:
-        path: ${{ steps.vars.outputs.composer-cache-path }}
-        key: ${{ runner.os }}-composer-${{ hashFiles('**/composer.lock') }}
-        restore-keys: ${{ runner.os }}-composer-
+        php-version: '7.4'
+        extensions: dom, curl, libxml, mbstring, zip, pcntl, pdo, sqlite, pdo_sqlite, mysql, mysqli, pdo_mysql, bcmath, soap, intl, gd, exif, iconv, imagick
+        coverage: none
     - name: Install Composer dependencies
-      run: composer install -o --no-dev --no-progress
+      uses: "ramsey/composer-install@v2"
+      with:
+        composer-options: "--no-dev"
+    - name: Run Strauss
+      run: composer run-script prefix-namespaces-prod
     - name: Create build dir
       run: mkdir build
     - name: Copy files
@@ -42,48 +37,7 @@ jobs:
         src: '.'
         dest: 'build'
     - name: Upload artifact
-      uses: actions/upload-artifact@v1
+      uses: actions/upload-artifact@v4
       with:
-        name: build
+        name: ${{ secrets.SLUG }}-dev
         path: build
-
-  # Creates the dev package artifact from develop branch
-  pack:
-    name: Pack
-    runs-on: ubuntu-latest
-    needs: build
-    steps:
-      - name: Download artifact
-        uses: actions/download-artifact@v1
-        with:
-          name: build
-          path: ${{ secrets.SLUG }}
-      - name: Create archive
-        run: |
-          zip -rq ${{ secrets.SLUG }}-dev.zip ${{ secrets.SLUG }}
-      - name: Upload artifact
-        uses: actions/upload-artifact@v1
-        with:
-          name: ${{ secrets.SLUG }}-dev
-          path: ${{ secrets.SLUG }}-dev.zip
-
-  # Uploads the develop package to internal repository
-  upload:
-    name: Upload to repo
-    runs-on: ubuntu-latest
-    needs: pack
-    steps:
-      - name: Download artifact
-        uses: actions/download-artifact@v1
-        with:
-          name: ${{ secrets.SLUG }}-dev
-          path: .
-      - name: Upload to repo
-        uses: Pendect/action-rsyncer@v1.1.0
-        env:
-          DEPLOY_KEY: ${{ secrets.PACKAGES_DEPLOY_KEY }}
-        with:
-          flags: '-avz'
-          options: '--recursive '
-          src: '.'
-          dest: '${{ secrets.BRACKETSPACE_REPO_RSYNC_URL }}${{ secrets.SLUG }}/'

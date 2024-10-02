@@ -89,7 +89,7 @@ if (! class_exists('NotificationSignature')) :
 		/**
 		 * Gets plugin filesystem
 		 *
-		 * @since  [Next]
+		 * @since  4.0.0
 		 * @throws \Exception When runtime wasn't invoked yet.
 		 * @return \BracketSpace\Notification\Signature\Dependencies\Micropackage\Filesystem\Filesystem
 		 */

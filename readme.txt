@@ -2,7 +2,7 @@
 Contributors: notification, bracketspace, Kubitomakita
 Tags: notification, notify, email, mail, signature
 Requires at least: 3.6
-Tested up to: 5.8
+Tested up to: 6.8
 Stable tag: 4.0.0
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
